@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = "T2M1og_uLjqZEztfNe4wlJYmUxIhpXDs";
+const API_KEY = process.env.API_KEY;
 
 export default {
   fetchHouses() {
