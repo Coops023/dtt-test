@@ -6,11 +6,14 @@
     <input type="text" name="search" id="search" placeholder="Search for city" v-model="searchQuery"  autocomplete="off" @input="searchHouses($data)">
     </form>
 
-    <select name="sortBy" id="select" v-model="sortBy" @change="sortHouses($data)">
+    <select name="sortBy" id="select" v-model="sortingOptionValue" @change="sortHouses($data)">
       <option value="high">Price high to low</option>
       <option value="low">price low to high</option>
     </select>
-   
+    <house-card :sortingOptionValue="sortingOptionValue" :searchQuery="searchQuery"/>
+    <!-- <div v-for="house in allSortedHouses" :key="house.id">
+      {{house.price}}
+    </div>
     <div v-if="!searchQuery">
       <div v-for="house in allHouses" :key="house.id">
           {{house.location.city}}
@@ -23,44 +26,29 @@
       <div v-for="house in allSearchedHouses" :key="house.id">
           {{house.location.city}}
       </div>
-    </div>
+    </div> -->
   
-
   </div>
 </template>
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
+import HouseCard from "@/components/HouseCard.vue"
 
 export default {
   name: 'HomeView',
   components: {
-
+    HouseCard
   }, 
   data(){
     return {
       searchQuery: null,
-      sortBy: null
+      sortingOptionValue: null
     }
   },
   computed: {
     ...mapGetters(['allHouses', 'allSortedHouses', "allSearchedHouses"]),
-
-      // sortHouses(){
-      //     if(this.sortBy === 'high'){
-      //     return [...this.allHouses].sort((a, b) => {
-      //       return b.price - a.price
-      //     })
-      //     } else if(this.sortBy === 'low'){
-      //       return [...this.allHouses].sort((a, b) => {
-      //       return a.price - b.price
-      //     })
-      //     }else {
-      //       return false
-      //     }
-         
-      //   }
-        
+      
   },
     methods: {
     ...mapActions(['fetchHouses', 'searchHouses', "sortHouses"]),
