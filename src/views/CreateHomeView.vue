@@ -35,7 +35,7 @@
             <input type="file" accept="image/*"  @change="onFileChange($event.target.files)">
 
             <label for="hasGarage">Has garage</label>
-            <select name="fruit"  v-model="form.hasGarage">
+            <select name="hasGarage"  v-model="form.hasGarage">
             <option value="true">true</option>
             <option value="false">false</option>
             </select>
