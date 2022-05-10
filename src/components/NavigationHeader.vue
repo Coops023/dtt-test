@@ -11,7 +11,7 @@
 export default {
     name: "NavigationHeader",
     data() {
-        return { homeClicked: false, aboutClicked: false}
+        return { homeClicked: true, aboutClicked: false}
   },
     methods:{
         changeHomeIcon: function(){
@@ -35,7 +35,10 @@ display: flex;
 width: 100%;
 justify-content: space-evenly;    
 padding-top: 1em;
+
 box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.2);
+background-color: white;
+z-index: 2;
 }
 
 router-link{

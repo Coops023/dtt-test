@@ -18,10 +18,10 @@ export default {
 </script>
 
 <style scoped>
-.app{
-  margin: 0 ;
-
- 
+.App{
+  margin: 0;
+  background-color: #f6f6f6;
+  padding-bottom: 5em;
 }
 
 
