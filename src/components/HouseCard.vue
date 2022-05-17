@@ -37,19 +37,89 @@
             </div>
           </div>
           </div>
-        
-
       </router-link>
       </div>
     </div>
     <div v-else-if="searchHouses">
       <div v-for="house in searchHouses" :key="house.id">
-          {{house.location.city}}
+               <router-link to="#" class="house-card">
+        <img  :src="house.image" alt="house-image">
+        <div class="house-details">
+          <div class="place-price">
+          <div class="street-edit-delete">
+            <h7>
+            {{house.location.street}} 
+            </h7>
+          <div class="edit-delete-wrap" v-if="house.madeByMe">
+            <img class="edit-delete-btn" src="/images/edit.png" alt="" srcset="">
+            <img class="edit-delete-btn" src="/images/delete.png" alt="" srcset="">
+          </div>
+          </div>
+          <p class="price">&euro;{{house.price.toLocaleString()}}</p>
+          <div class="zip-city">
+            {{house.location.zip}}
+            {{house.location.city}}
+          </div>
+          </div>
+          <div>
+            <div class="rooms">
+             <div class="room-img-wrap">
+              <img class="room-img" src="/images/bedroom.png" alt="">
+              <div>{{house.rooms.bedrooms}}</div>
+              </div>
+                 <div class="room-img-wrap">
+              <img class="room-img" src="/images/bathroom.png" alt="">
+              </div>
+              <div>{{house.rooms.bathrooms}}</div>
+                 <div class="room-img-wrap">
+              <img class="room-img" src="/images/size.png" alt="">
+              <div >{{house.size + "m2"}} </div>
+              </div>
+            </div>
+          </div>
+          </div>
+      </router-link>
       </div>
     </div>
      <div v-else-if="sortHouses">
       <div v-for="house in sortHouses" :key="house.id">
-          {{house.location.city}}
+               <router-link to="#" class="house-card">
+        <img  :src="house.image" alt="house-image">
+        <div class="house-details">
+          <div class="place-price">
+          <div class="street-edit-delete">
+            <h7>
+            {{house.location.street}} 
+            </h7>
+          <div class="edit-delete-wrap" v-if="house.madeByMe">
+            <img class="edit-delete-btn" src="/images/edit.png" alt="" srcset="">
+            <img class="edit-delete-btn" src="/images/delete.png" alt="" srcset="">
+          </div>
+          </div>
+          <p class="price">&euro;{{house.price.toLocaleString()}}</p>
+          <div class="zip-city">
+            {{house.location.zip}}
+            {{house.location.city}}
+          </div>
+          </div>
+          <div>
+            <div class="rooms">
+             <div class="room-img-wrap">
+              <img class="room-img" src="/images/bedroom.png" alt="">
+              <div>{{house.rooms.bedrooms}}</div>
+              </div>
+                 <div class="room-img-wrap">
+              <img class="room-img" src="/images/bathroom.png" alt="">
+              </div>
+              <div>{{house.rooms.bathrooms}}</div>
+                 <div class="room-img-wrap">
+              <img class="room-img" src="/images/size.png" alt="">
+              <div >{{house.size + "m2"}} </div>
+              </div>
+            </div>
+          </div>
+          </div>
+      </router-link>
       </div>
     </div>
 </template>
@@ -86,6 +156,7 @@ export default {
   color: black;
   margin: 1em 1em;
   font-family: "open sans";
+  
 }
 
 .edit-delete-wrap{
