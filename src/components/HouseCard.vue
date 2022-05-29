@@ -1,11 +1,12 @@
 <template>
    <div v-if="!searchHouses && !sortHouses">
-      <div v-for="house in allHouses" :key="house.id">
-      <router-link to="#" class="house-card">
+      <div v-for="house in allHouses" :key="house.id" >
+      <router-link to="/house-details" @click="houseDetail(house.id)" class="house-card">
         <img  :src="house.image" alt="house-image">
         <div class="house-details">
           <div class="place-price">
           <div class="street-edit-delete">
+            
             <h7>
             {{house.location.street}} 
             </h7>
@@ -134,7 +135,7 @@ export default {
    
     },
     methods: {
- ...mapActions(['fetchHouses']),
+ ...mapActions(['fetchHouses', 'houseDetail']),
     },
     created(){
     this.fetchHouses()

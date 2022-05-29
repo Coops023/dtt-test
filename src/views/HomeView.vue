@@ -104,7 +104,7 @@ export default {
 h1{
  text-align: center;
  margin: 0;
- font-size: 28px;
+ font-size: 24px;
 }
 
 .add-btn{
