@@ -34,7 +34,7 @@ bottom: 0;
 display: flex;
 width: 100%;
 justify-content: space-evenly;    
-padding-top: 1em;
+padding-top: 2em;
 
 box-shadow: 0px -4px 3px rgba(50, 50, 50, 0.2);
 background-color: white;

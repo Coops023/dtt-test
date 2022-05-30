@@ -19,6 +19,11 @@ const actions = {
   createNewHouse(_, formData) {
     api.createNewHouse(formData);
   },
+  async deleteHouse({ commit }, house) {
+    await api.deleteHouse(house);
+    const response = await api.fetchHouses();
+    commit("setHouses", response.data);
+  },
   async houseDetail({ commit }, id) {
     const response = await api.fetchHouses();
 

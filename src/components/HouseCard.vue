@@ -1,19 +1,18 @@
 <template>
    <div v-if="!searchHouses && !sortHouses">
       <div v-for="house in allHouses" :key="house.id" >
+           <div class="edit-delete-wrap" v-if="house.madeByMe">
+            <img class="edit-delete-btn" src="/images/edit.png" alt="" srcset="">
+            <img @click="deleteHouse(house.id)"  class="edit-delete-btn" src="/images/delete.png" alt="" srcset="">
+          </div>
       <router-link to="/house-details" @click="houseDetail(house.id)" class="house-card">
         <img  :src="house.image" alt="house-image">
         <div class="house-details">
           <div class="place-price">
           <div class="street-edit-delete">
-            
             <h7>
             {{house.location.street}} 
             </h7>
-          <div class="edit-delete-wrap" v-if="house.madeByMe">
-            <img class="edit-delete-btn" src="/images/edit.png" alt="" srcset="">
-            <img class="edit-delete-btn" src="/images/delete.png" alt="" srcset="">
-          </div>
           </div>
           <p class="price">&euro;{{house.price.toLocaleString()}}</p>
           <div class="zip-city">
@@ -130,12 +129,17 @@ import {mapActions, mapGetters} from 'vuex'
 export default {
     name: "HouseCard",
     props: ["searchHouses", "sortHouses"],
+    data(){
+      return {
+        allhouses: this.allHouses,
+      }
+    },
     computed: {
     ...mapGetters(['allHouses']),
    
     },
     methods: {
- ...mapActions(['fetchHouses', 'houseDetail']),
+ ...mapActions(['fetchHouses', 'houseDetail', 'deleteHouse']),
     },
     created(){
     this.fetchHouses()
@@ -167,12 +171,16 @@ export default {
   height: 1em;
   position: relative;
   right: -10px;
-  z-index: 0.5;
+  
+  
 }
 .edit-delete-btn{
   width: 0.8em !important;
   height: 0.8em !important;
  
+}
+.delete-btn{
+  z-index: 10;
 }
 
 .street-edit-delete{

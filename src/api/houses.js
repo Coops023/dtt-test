@@ -10,6 +10,17 @@ export default {
       },
     });
   },
+  deleteHouse(id) {
+    axios
+      .delete(`https://api.intern.d-tt.nl/api/houses/${id}`, {
+        headers: {
+          "X-Api-Key": API_KEY,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  },
   createNewHouse(formData) {
     console.log("api page", formData);
     const image = formData.houseImage;
