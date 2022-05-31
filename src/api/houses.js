@@ -10,15 +10,15 @@ export default {
       },
     });
   },
-  deleteHouse(id) {
+  async deleteHouse(id) {
     axios
       .delete(`https://api.intern.d-tt.nl/api/houses/${id}`, {
         headers: {
           "X-Api-Key": API_KEY,
         },
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        console.log("successful deletion");
       });
   },
   createNewHouse(formData) {

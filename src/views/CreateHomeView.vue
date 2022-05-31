@@ -1,12 +1,13 @@
 <template>
+
     <div class="create-home">
+       
         <div class="heading-back-btn">
         <router-link to="/"><img class="back-arrow" src="images/back-arrow.png" alt=""></router-link>
         <h1>Create new listing</h1>
         </div>
 
         <form class="create-form" @submit.prevent="createNewHouse($data, $event.target.files)">
-
             <label for="streetName">Street name&#42;</label>
             <input type="text" name="streetName" v-model="form.streetName" placeholder="Enter the street name" required>
 
@@ -116,8 +117,13 @@ export default {
         },
         resetImage(){
             this.url = null
-        }
+        }, 
+         goHome(){
+           this.$router.push({ path: '/' })
         },
+        },
+       
+        
        
     computed: {
 

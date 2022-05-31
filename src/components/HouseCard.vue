@@ -1,18 +1,19 @@
 <template>
+
    <div v-if="!searchHouses && !sortHouses">
       <div v-for="house in allHouses" :key="house.id" >
            <div class="edit-delete-wrap" v-if="house.madeByMe">
-            <img class="edit-delete-btn" src="/images/edit.png" alt="" srcset="">
-            <img @click="deleteHouse(house.id)"  class="edit-delete-btn" src="/images/delete.png" alt="" srcset="">
+            <img  class="edit-delete-btn" src="/images/edit.png" alt="edit-button" srcset="">
+            <img @click="showModal(house.id)"  class="edit-delete-btn" src="/images/delete.png" alt="delete-button" >
           </div>
       <router-link to="/house-details" @click="houseDetail(house.id)" class="house-card">
         <img  :src="house.image" alt="house-image">
         <div class="house-details">
           <div class="place-price">
           <div class="street-edit-delete">
-            <h7>
+            <h5>
             {{house.location.street}} 
-            </h7>
+            </h5>
           </div>
           <p class="price">&euro;{{house.price.toLocaleString()}}</p>
           <div class="zip-city">
@@ -129,21 +130,20 @@ import {mapActions, mapGetters} from 'vuex'
 export default {
     name: "HouseCard",
     props: ["searchHouses", "sortHouses"],
-    data(){
-      return {
-        allhouses: this.allHouses,
-      }
-    },
+  
     computed: {
     ...mapGetters(['allHouses']),
    
     },
     methods: {
  ...mapActions(['fetchHouses', 'houseDetail', 'deleteHouse']),
+   
+  
     },
     created(){
     this.fetchHouses()
-  }   
+  },
+
 }
 </script>
 
@@ -187,7 +187,7 @@ export default {
   display: flex;
 }
 
-h7{
+h5{
   font-family: "montserrat";
   font-weight: 600;
   font-size: 12px;
