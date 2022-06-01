@@ -3,8 +3,7 @@
     
       <h1>Houses</h1>
      <router-link class="add-btn" to="/create-house" ><img src="/images/create.png" alt=""></router-link>
-    
-   
+  
     <div class="search-bar-wrap">
       <img class="search-icon" src="/images/search-icon.png" alt="search-icon">
     <input class="search-bar" type="text" name="search" id="search" placeholder="Search for a house" v-model="searchQuery"  autocomplete="off">
@@ -95,7 +94,7 @@ export default {
 
 <style scoped>
 .home{
-  height: 100%;
+  height: min-content;
   font-family: "montserrat";
   max-width: 100vw;
   padding-top: 1em;

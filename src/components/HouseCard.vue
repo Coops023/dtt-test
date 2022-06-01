@@ -1,7 +1,8 @@
 <template>
-
+ <delete-modal v-if="modal" :houseId="houseId" />
    <div v-if="!searchHouses && !sortHouses">
       <div v-for="house in allHouses" :key="house.id" >
+       
            <div class="edit-delete-wrap" v-if="house.madeByMe">
             <img  class="edit-delete-btn" src="/images/edit.png" alt="edit-button" srcset="">
             <img @click="showModal(house.id)"  class="edit-delete-btn" src="/images/delete.png" alt="delete-button" >
@@ -127,18 +128,32 @@
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
+import DeleteModal from "./DeleteModal.vue"
 export default {
     name: "HouseCard",
     props: ["searchHouses", "sortHouses"],
-  
+    components: {DeleteModal},
+    data(){
+      return {
+        modal: false,
+        houseId : 0
+      }
+    },
     computed: {
     ...mapGetters(['allHouses']),
    
     },
     methods: {
  ...mapActions(['fetchHouses', 'houseDetail', 'deleteHouse']),
-   
-  
+   showModal(id){
+     if(!this.modal){
+      this.modal = true
+     } else{
+       this.modal = false
+     }
+     
+     this.houseId = id
+   }
     },
     created(){
     this.fetchHouses()
@@ -171,8 +186,12 @@ export default {
   height: 1em;
   position: relative;
   right: -10px;
-  
-  
+  width: 2em;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  right: 0.8em;
+  padding-top: .2em;
 }
 .edit-delete-btn{
   width: 0.8em !important;
